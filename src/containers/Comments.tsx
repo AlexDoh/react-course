@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Component, ComponentProps, ComponentState } from 'react';
+import { Component, ComponentProps, ComponentState, MouseEvent } from 'react';
+import ArticleTitle from '../components/article/article-title/ArticleTitle';
+import Button from '../shared/button/Button';
+import Comment from '../components/comment/Comment';
 
 class Comments extends Component<ComponentProps<any>, ComponentState> {
   constructor(props) {
@@ -10,32 +13,39 @@ class Comments extends Component<ComponentProps<any>, ComponentState> {
     };
   }
 
-  commentsLabel: string = 'Comments';
-  // articleText: string = 'Zinedine Zidane\'s decision to quit Real Madrid just five days after leading the team to their third consecutive Champions League title has thrown the Spanish giants into turmoil.\n' +
-  //   '\n' +
-  //   'Los Blancos president Florentino Perez was obviously stunned by the decision, which Zidane delivered with a notably open and revealing news conference on Thursday lunchtime, and now the Bernabeu top brass have to work hard and work fast to identify and pursue their preferred successor to the Frenchman.';
-  //
-  // toggleArticle = (event: Event): void => {
-  //   event.preventDefault();
-  //   this.setState(prevState => ({ showComments: !prevState.showComments }));
-  // };
-  //
-  // componentDidMount = (): void => {
-  // };
-  //
-  // componentWillUnmount = (): void => {
-  // };
-  //
-  // render = (): JSX.Element => (
-  //   <div>
-  //     <ArticleTitle
-  //       onArticleToggle={this.toggleArticle}
-  //       label={this.commentsLabel}
-  //       showArticle={this.state.showArticle}
-  //     />
-  //     {this.state.showArticle ? <ArticleText text={this.articleText}/> : null}
-  //   </div>
-  // );
+  showComments: boolean = true;
+  commentsLength: number = 2;
+  commentsLabel: string = `Comments (${this.commentsLength})`;
+  commentText: string = 'With one of the biggest jobs in world football suddenly up for grabs, thoughts naturally turned to the candidates, with one name looming large above all others.';
+
+  toggleComments = (event: MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
+    this.setState(prevState => ({ showComments: !prevState.showComments }));
+  };
+
+  componentDidMount = (): void => {
+  };
+
+  componentWillUnmount = (): void => {
+  };
+
+  render = (): JSX.Element => (
+    <div>
+      <div className='container'>
+        <p className='container__title'>{this.commentsLabel}</p>
+        <Button
+          onButtonClick={this.toggleComments}
+          label='show/hide'
+        />
+      </div>
+      {this.state.showComments ?
+        <div>
+          <Comment text={this.commentText}/>
+          <Comment text={this.commentText}/>
+        </div>
+        : null}
+    </div>
+  );
 }
 
 export default Comments;
