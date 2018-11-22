@@ -19,7 +19,7 @@ class Article extends Component<ComponentProps<any>, ComponentState> {
 
   toggleArticle = (event: Event): void => {
     event.preventDefault();
-    this.setState(prevState => ({ showComments: !prevState.showComments }));
+    this.setState(prevState => ({ showArticle: !prevState.showArticle }));
   };
 
   componentDidMount = (): void => {
