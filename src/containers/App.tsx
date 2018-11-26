@@ -25,7 +25,7 @@ export default class App extends Component<ComponentProps<any>, ComponentState> 
   render = (): JSX.Element => (
     <div>
       <Title text={title}/>
-      {this.articles.map(article => <Article articleLabel={article.label} articleText={article.text}/>)}
+      {this.articles.map(article => <Article key={article.id} articleLabel={article.label} articleText={article.text}/>)}
       <Comments/>
     </div>
   );

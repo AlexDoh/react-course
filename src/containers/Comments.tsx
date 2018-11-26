@@ -46,7 +46,7 @@ class Comments extends Component<ComponentProps<any>, ComponentState> {
       </div>
       {this.state.showComments ?
         <div>
-          {this.comments.map(comment => <Comment text={comment.text}/>)}
+          {this.comments.map(comment => <Comment key={comment.id} text={comment.text}/>)}
         </div>
         : null}
     </div>
