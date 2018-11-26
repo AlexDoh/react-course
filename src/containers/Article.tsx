@@ -12,11 +12,6 @@ class Article extends Component<ComponentProps<any>, ComponentState> {
     };
   }
 
-  articleLabel: string = 'Zinedine Zidane leaves Real Madrid';
-  articleText: string = 'Zinedine Zidane\'s decision to quit Real Madrid just five days after leading the team to their third consecutive Champions League title has thrown the Spanish giants into turmoil.\n' +
-    '\n' +
-    'Los Blancos president Florentino Perez was obviously stunned by the decision, which Zidane delivered with a notably open and revealing news conference on Thursday lunchtime, and now the Bernabeu top brass have to work hard and work fast to identify and pursue their preferred successor to the Frenchman.';
-
   toggleArticle = (event: Event): void => {
     event.preventDefault();
     this.setState(prevState => ({ showArticle: !prevState.showArticle }));
@@ -32,10 +27,10 @@ class Article extends Component<ComponentProps<any>, ComponentState> {
     <div>
       <ArticleTitle
         onArticleToggle={this.toggleArticle}
-        label={this.articleLabel}
+        label={this.props.articleLabel}
         showArticle={this.state.showArticle}
       />
-      {this.state.showArticle ? <ArticleText text={this.articleText}/> : null}
+      {this.state.showArticle ? <ArticleText text={this.props.articleText}/> : null}
     </div>
   );
 }

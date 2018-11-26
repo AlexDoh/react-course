@@ -7,7 +7,7 @@ const ArticleTitle = ({ onArticleToggle, label, showArticle }): JSX.Element => (
       <h2 className='container__title'>{label}</h2>
       <Button
         onButtonClick={onArticleToggle}
-        label={showArticle ? 'show article' : 'hide article'}
+        label={showArticle ? 'hide article' : 'show article'}
       />
     </div>
   );
